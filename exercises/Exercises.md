@@ -4,13 +4,13 @@
 
 # Frequently used options
 
-Create `exercises` directory and within it, create another directory for this chapter, say `freq_options` or `chapter_2`. Input is a file downloaded from internet — https://www.gutenberg.org/files/345/345.txt saved as `dracula.txt`. To solve the exercises, modify the partial command shown just before the expected output.
+Create `exercises` directory and within it, create another directory for this chapter, say `freq_options` or `chapter_2`. Input is a file downloaded from internet — https://www.gutenberg.org/files/345/345-0.txt saved as `dracula.txt`. To solve the exercises, modify the partial command shown just before the expected output.
 
 **a)** Display all lines containing `ablaze`
 
 ```bash
 $ mkdir -p exercises/freq_options && cd $_
-$ wget https://www.gutenberg.org/files/345/345.txt -O dracula.txt
+$ wget https://www.gutenberg.org/files/345/345-0.txt >> dracula.txt
 
 $ grep ##### add your solution here
 the room, his face all ablaze with excitement. He rushed up to me and
