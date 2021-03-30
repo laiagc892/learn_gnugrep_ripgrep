@@ -1,25 +1,25 @@
-# Exercise solutions
+# Exercises
 
 <br>
 
 # Frequently used options
 
-Create `exercises` directory and within it, create another directory for this chapter, say `freq_options` or `chapter_2`. Input is a file downloaded from internet — https://www.gutenberg.org/files/345/345.txt saved as `dracula.txt`.
+Create `exercises` directory and within it, create another directory for this chapter, say `freq_options` or `chapter_2`. Input is a file downloaded from internet — https://www.gutenberg.org/files/345/345-0.txt saved as `dracula.txt`. To solve the exercises, modify the partial command shown just before the expected output.
 
 **a)** Display all lines containing `ablaze`
 
 ```bash
 $ mkdir -p exercises/freq_options && cd $_
-$ wget https://www.gutenberg.org/files/345/345.txt -O dracula.txt
+$ wget https://www.gutenberg.org/files/345/345-0.txt >> dracula.txt
 
-$ grep 'ablaze' dracula.txt
+$ grep ablaze dracula.txt ##### add your solution here
 the room, his face all ablaze with excitement. He rushed up to me and
 ```
 
 **b)** Display all lines containing `abandon` as a whole word.
 
 ```bash
-$ grep -w 'abandon' dracula.txt
+$ grep -w abandon dracula.txt ##### add your solution here
 inheritors, being remote, would not be likely to abandon their just
 ```
 
@@ -29,7 +29,8 @@ inheritors, being remote, would not be likely to abandon their just
 * either `quip` or `sleep` matched case sensitively
 
 ```bash
-$ grep -i 'professor' dracula.txt | grep -e 'quip' -e 'sleep'
+$ grep grep -i professor dracula.txt | grep -e "quip" -e "sleep" ##### add your solution here
+$ grep grep -i professor dracula.txt | grep -E "quip|sleep" ##### add your solution here
 equipment of a professor of the healing craft. When we were shown in,
 its potency; and she fell into a deep sleep. When the Professor was
 sleeping, and the Professor seemingly had not moved from his seat at her
@@ -39,7 +40,7 @@ to sleep, and something weaker when she woke from it. The Professor and
 **d)** Display first three lines containing `Count`
 
 ```bash
-$ grep -m3 'Count' dracula.txt
+$ grep -m 3 Count dracula.txt ##### add your solution here
 town named by Count Dracula, is a fairly well-known place. I shall enter
 must ask the Count all about them.)
 Count Dracula had directed me to go to the Golden Krone Hotel, which I
@@ -48,7 +49,7 @@ Count Dracula had directed me to go to the Golden Krone Hotel, which I
 **e)** Display first six lines containing `Harker` but not either of `Journal` or `Letter`
 
 ```bash
-$ grep -v -e 'Journal' -e 'Letter' dracula.txt | grep -m6 'Harker'
+$ grep ##### add your solution here
 said, "The Herr Englishman?" "Yes," I said, "Jonathan Harker." She
 "I am Dracula; and I bid you welcome, Mr. Harker, to my house. Come in;
 I shall be all alone, and my friend Harker Jonathan--nay, pardon me, I
@@ -60,7 +61,7 @@ junior partner of the important firm Hawkins & Harker; and so, as you
 **f)** Display lines containing `Zoölogical Gardens` along with line number prefix.
 
 ```bash
-$ grep -n 'Zoölogical Gardens' dracula.txt
+$ grep ##### add your solution here
 5597:         _Interview with the Keeper in the Zooelogical Gardens._
 5601:the keeper of the section of the Zooelogical Gardens in which the wolf
 8042:the Zooelogical Gardens a young one may have got loose, or one be bred
@@ -69,8 +70,8 @@ $ grep -n 'Zoölogical Gardens' dracula.txt
 **g)** Find total count of whole word `the` (irrespective of case).
 
 ```bash
-$ grep -iow 'the' dracula.txt | wc -l
-8090 (text actual: 8099)
+$ grep ##### add your solution here
+8090
 ```
 
 **h)** The below code snippet tries to get number of empty lines, but apparently shows wrong result, why?
@@ -80,16 +81,6 @@ $ grep -cx '' dracula.txt
 0
 ```
 
-If you use the `file` command, you'll see that the input file has dos-style line endings. So, there are no empty lines because there's at least `\r` character in every line other than the newline character.
-
-```bash
-$ file dracula.txt 
-dracula.txt: ASCII text, with CRLF line terminators
-
-$ grep -cx $'\r' dracula.txt
-2559
-```
-
 <br>
 
 # BRE/ERE Regular Expressions
@@ -97,10 +88,10 @@ $ grep -cx $'\r' dracula.txt
 **a)** Extract all pairs of `()` with/without text inside them, provided they do not contain `()` characters inside.
 
 ```bash
-$ echo 'I got (12) apples' | grep -o '([^()]*)'
+$ echo 'I got (12) apples' | grep ##### add your solution here
 (12)
 
-$ echo '((2 +3)*5)=25 and (4.3/2*()' | grep -o '([^()]*)'
+$ echo '((2 +3)*5)=25 and (4.3/2*()' | grep ##### add your solution here
 (2 +3)
 ()
 ```
@@ -109,7 +100,7 @@ $ echo '((2 +3)*5)=25 and (4.3/2*()' | grep -o '([^()]*)'
 
 ```bash
 $ lines='lovely\n1 dentist\n2 lonely\neden\nfly away\ndent'
-$ printf '%b' "$lines" | grep -E '^den|ly$'
+$ printf '%b' "$lines" | grep ##### add your solution here
 lovely
 2 lonely
 dent
@@ -118,7 +109,7 @@ dent
 **c)** Extract all whole words that contains `42` but not at edge of word. Assume a word cannot contain `42` more than once.
 
 ```bash
-$ echo 'hi42bye nice1423 bad42 cool_42a 42fake' | grep -oE '\w+42\w+'
+$ echo 'hi42bye nice1423 bad42 cool_42a 42fake' | grep ##### add your solution here
 hi42bye
 nice1423
 cool_42a
@@ -127,7 +118,7 @@ cool_42a
 **d)** Each line in given input contains a single word. Match all lines containing `car` but not as a whole word.
 
 ```bash
-$ printf 'car\nscar\ncare\npot\nscare\n' | grep -E '\Bcar|car\B'
+$ printf 'car\nscar\ncare\npot\nscare\n' | grep ##### add your solution here
 scar
 care
 scare
@@ -136,7 +127,7 @@ scare
 **e)** For `dracula.txt` file, count the total number of lines that contain `removed` or `rested` or `received` or `replied` or `refused` or `retired` as whole words.
 
 ```bash
-$ grep -wcE 're(mov|st|ceiv|pli|fus|tir)ed' freq_options/dracula.txt
+$ grep ##### add your solution here
 73
 ```
 
@@ -144,7 +135,7 @@ $ grep -wcE 're(mov|st|ceiv|pli|fus|tir)ed' freq_options/dracula.txt
 
 ```bash
 $ words='sequoia subtle exhibit sets tests sit'
-$ echo "$words" | grep -ow 's\w*t\w*' | grep 'e'
+$ echo "$words" | grep ##### add your solution here
 subtle
 sets
 ```
@@ -152,7 +143,7 @@ sets
 **g)** Extract all whole words having the same first and last character.
 
 ```bash
-$ echo 'oreo not a pip roar took 22' | grep -owE '\w|(\w)\w*\1'
+$ echo 'oreo not a pip roar took 22' | grep ##### add your solution here
 oreo
 a
 pip
@@ -163,23 +154,19 @@ roar
 **h)** Match all lines containing `*[5]`
 
 ```bash
-$ printf '4*5]\n(9-2)*[5]\n[5]*3\nr*[5\n' | grep -F '*[5]'
+$ printf '4*5]\n(9-2)*[5]\n[5]*3\nr*[5\n' | grep ##### add your solution here
 (9-2)*[5]
 ```
 
 **i)** For the given quantifiers, what would be the equivalent form using `{m,n}` representation?
 
-* `?` is same as `{,1}`
-* `*` is same as `{0,}`
-* `+` is same as `{1,}`
+* `?` is same as
+* `*` is same as
+* `+` is same as
 
 **j)** In ERE, `(a*|b*)` is same as `(a|b)*` — True or False?
 
-False. Because `(a*|b*)` will match only sequences like `a`, `aaa`, `bb`, `bbbbbbbb`. But `(a|b)*` can match a mixed sequence like `ababbba` too.
-
 **k)** `grep -wE '[a-z](on|no)[a-z]'` is same as `grep -wE '[a-z][on]{2}[a-z]'`. True or False? Sample input shown below might help to understand the differences, if any.
-
-False. `[on]{2}` will also match `oo` and `nn`.
 
 ```bash
 $ printf 'known\nmood\nknow\npony\ninns\n'
@@ -194,7 +181,7 @@ inns
 
 ```bash
 $ lines='handed\nhand\nhandy\nunhand\nhands\nhandle\n'
-$ printf '%b' "$lines" | grep -xE 'hand([sy]|le)?'
+$ printf '%b' "$lines" | grep ##### add your solution here
 hand
 handy
 hands
@@ -209,7 +196,7 @@ handle
 
 ```bash
 $ # assumes 'exercises/context_matching' as CWD
-$ grep -B1 'raise' palindrome.py
+$ grep ##### add your solution here
     if re.search(r'[^a-zA-Z]', ip_str):
         raise ValueError("Characters other than alphabets and punctuations")
     elif len(ip_str) < 3:
@@ -220,7 +207,7 @@ $ grep -B1 'raise' palindrome.py
 
 ```bash
 $ lines='rat\ndog\nbat\n\n42\n3.14\n\nhi there\nhave a nice day'
-$ printf '%b' "$lines" | grep --group-separator=$'\n' -A0 '.'
+$ printf '%b' "$lines" | grep ##### add your solution here
 rat
 dog
 bat
@@ -251,7 +238,7 @@ $ cd Command-line-text-processing
 **a)** List all files containing `xargs` or `python3`
 
 ```bash
-$ grep -rlE 'xargs|python3'
+$ grep ##### add your solution here
 gnu_grep.md
 miscellaneous.md
 wheres_my_file.md
@@ -262,7 +249,7 @@ README.md
 **b)** List all files containing `grep` but do not list if they are from `.git` or `exercises` directories.
 
 ```bash
-$ grep --exclude-dir='.git' --exclude-dir='exercises' -rl 'grep'
+$ grep ##### add your solution here
 gnu_grep.md
 sorting_stuff.md
 file_attributes.md
@@ -279,7 +266,7 @@ perl_the_swiss_knife.md
 **c)** List all files containing `baz` if the filename ends with `.txt` but do not search hidden directories.
 
 ```bash
-$ grep --include='*.txt' --exclude-dir='.*' -rl 'baz'
+$ grep ##### add your solution here
 exercises/GNU_grep/ex12_regex_character_class_part1/sample_words.txt
 exercises/GNU_grep/ex16_misc_and_extras/sample.txt
 exercises/GNU_grep/ex08_search_pattern_from_file.txt
@@ -288,14 +275,14 @@ exercises/GNU_grep/ex08_search_pattern_from_file.txt
 **d)** Search files ending with `.md` only in current directory (i.e. no recursive searching) and count the total number of occurrences of whole words `grep` or `sed` or `awk`.
 
 ```bash
-$ grep -owE 'grep|sed|awk' *.md | wc -l
+$ grep ##### add your solution here
 1532
 ```
 
 **e)** List all files containing `Hello` unless the filename ends with `.txt` or `.sh`
 
 ```bash
-$ grep --exclude='*.txt' --exclude='*.sh' -rl 'Hello'
+$ grep ##### add your solution here
 gnu_grep.md
 miscellaneous.md
 file_attributes.md
@@ -311,7 +298,7 @@ perl_the_swiss_knife.md
 **f)** List all files containing whole words `awk` and `perl` but not `basename`. Although not the case here, assume that filenames can contain shell special characters like space, semicolon, newline, etc.
 
 ```bash
-$ grep -rlwZ 'awk' | xargs -0 grep -lwZ 'perl' | xargs -0 grep -Lw 'basename'
+$ grep ##### add your solution here
 sorting_stuff.md
 gnu_sed.md
 gnu_awk.md
@@ -329,7 +316,7 @@ perl_the_swiss_knife.md
 $ printf 'hi there\0good day\n' | grep 'good'
 Binary file (standard input) matches
 
-$ printf 'hi there\0good day\n' | grep -a 'good'
+$ printf 'hi there\0good day\n' | grep ##### add your solution here
 hi theregood day
 ```
 
@@ -344,9 +331,9 @@ $ for i in {1..5}; do seq 12; sleep 1; done | grep --line-buffered '[1-489]' | g
 **c)** Consider non-binary input having multiple lines of text. Display `Match` if input starts with a number and `Nope` if it doesn't.
 
 ```bash
-$ printf 'oh\n42' | grep -qz '^[0-9]' && echo 'Match' || echo 'Nope'
+$ printf 'oh\n42' | grep ##### add your solution here
 Nope
-$ printf '2a\nhi' | grep -qz '^[0-9]' && echo 'Match' || echo 'Nope'
+$ printf '2a\nhi' | grep ##### add your solution here
 Match
 ```
 
@@ -363,7 +350,7 @@ Match
 
 ```bash
 $ pswds='hunter2\nF2H3u#9\n*X3Yz3.14\t\nr2_d2_42\nA $ C1234'
-$ printf "$pswds" | grep -P '(?=(.*[a-zA-Z]){2})(?=(.*\d){3})(?!.*\s$).*[%*#$]'
+$ printf "$pswds" | grep ##### add your solution here
 F2H3u#9
 A $ C1234
 ```
@@ -371,9 +358,9 @@ A $ C1234
 **b)** Extract all fields from second to second last from the given rows having `,` as delimiter. There shouldn't be empty lines in output.
 
 ```bash
-$ printf 'foo,abc\ncat,x,dog' | grep -oP ',\K.+(?=,)'
+$ printf 'foo,abc\ncat,x,dog' | grep ##### add your solution here
 x
-$ echo 'foo,42,baz,3.14,abc' | grep -oP ',\K.+(?=,)'
+$ echo 'foo,42,baz,3.14,abc' | grep ##### add your solution here
 42,baz,3.14
 ```
 
@@ -389,7 +376,7 @@ qty price,oh
 4,price,3.14,qty,4
 4,qtyprice,3
 
-$ grep -P 'qty((?!\s|error).)*price' price.txt
+$ grep ##### add your solution here
 23,qty,price,42
 42 qty-6,apple-56,price-234,error
 4,qtyprice,3
@@ -402,7 +389,7 @@ $ # no output
 $ printf '2\nice\nwater\nNice\n42' | grep -zoP '(\w+).*\1\n'
 
 $ # correct the command to get expected output as shown
-$ printf '2\nice\nwater\nNice\n42' | grep -zoP '(?s)(\w+).*\1\n'
+$ printf '2\nice\nwater\nNice\n42' | grep ##### add your solution here
 ice
 water
 Nice
@@ -411,7 +398,7 @@ Nice
 **e)** Extract all whole words except those that start with `p` or `e` or `n`
 
 ```bash
-$ echo 'a pip at tea top earn row nice' | grep -woP '\b[^pen]\w*'
+$ echo 'a pip at tea top earn row nice' | grep ##### add your solution here
 a
 at
 tea
@@ -433,7 +420,7 @@ $ # assumes 'exercises/freq_options' as CWD
 $ # no output
 $ rg -cx '' dracula.txt
 
-$ rg --crlf -cx '' dracula.txt
+$ rg ##### add your solution here
 2559
 ```
 
@@ -441,13 +428,13 @@ $ rg --crlf -cx '' dracula.txt
 
 ```bash
 $ # replace [4]* with 2
-$ printf '2.3/[4]*6\nfoo\n5.3-[4]*9\n' | rg --passthru -F '[4]*' -r '2'
+$ printf '2.3/[4]*6\nfoo\n5.3-[4]*9\n' | rg ##### add your solution here
 2.3/26
 foo
 5.3-29
 
 $ # replace '3$a with &
-$ printf "a'3\$a\nb'3\$a6\nc\n" | rg --passthru -F \''3$a' -r '&'
+$ printf "a'3\$a\nb'3\$a6\nc\n" | rg ##### add your solution here
 a&
 b&6
 c
@@ -459,7 +446,7 @@ c
 $ # assumes 'exercises' as CWD
 $ mkdir ripgrep && cd $_
 
-$ rg -iPU '(?s)^```.*?^```(*SKIP)(*F)|ruby' sample.md
+$ rg ##### add your solution here
 3:REPL is a good way to learn RUBY for beginners.
 16:ruby comes loaded with awesome methods. Enjoy learning RuBy.
 ```
@@ -476,7 +463,7 @@ $ echo 'This is 2 good' > $'weird \n symbols'
 
 $ # all three files should be considered as input
 $ # use awk '{s+=$1} END{print s}' if datamash is not available
-$ rg -0 -l 'is' | xargs -0 rg -oIP '\d++\.\d++(*SKIP)(*F)|\d++' | datamash sum 1
+$ rg ##### add your solution here | datamash sum 1
 61
 ```
 
@@ -485,7 +472,7 @@ $ rg -0 -l 'is' | xargs -0 rg -oIP '\d++\.\d++(*SKIP)(*F)|\d++' | datamash sum 1
 ```bash
 $ # assumes 'exercises/ripgrep' as CWD
 
-$ rg -n --heading 'good way|bye' > out.txt
+$ rg ##### add your solution here
 $ cat out.txt
 space in filename.txt
 1:hi,31,3.14,bye
@@ -504,14 +491,14 @@ $ rg 'good' sample.md
 3:REPL is a good way to learn RUBY for beginners.
 
 $ # expected output
-$ rg -I --vimgrep 'good' sample.md
+$ rg ##### add your solution here
 3:11:REPL is a good way to learn RUBY for beginners.
 ```
 
 **g)** By default, `ripgrep` uses `\n` as the line separator. Use appropriate option to change the separator to `NUL` and display all lines containing `red` for the given input.
 
 ```bash
-$ printf 'dark red\nteal\n\0brown\n\0spared' | rg --null-data 'red'
+$ printf 'dark red\nteal\n\0brown\n\0spared' | rg ##### add your solution here
 dark red
 teal
 spared
@@ -520,7 +507,7 @@ spared
 **h)** Use appropriate options to replace all `NUL` characters with `---` and a newline character as shown below.
 
 ```bash
-$ printf 'dark red\nteal\n\0brown\n\0spared' | rg -a --passthru '\x00' -r $'---\n'
+$ printf 'dark red\nteal\n\0brown\n\0spared' | rg ##### add your solution here
 dark red
 teal
 ---
