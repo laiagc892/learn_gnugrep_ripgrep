@@ -57,7 +57,7 @@ Jonathan Harker will not be by my side to correct and aid me. He will be
 junior partner of the important firm Hawkins & Harker; and so, as you
 ```
 
-**f)** Display lines containing `Zooelogical Gardens` along with line number prefix.
+**f)** Display lines containing `Zoölogical Gardens` along with line number prefix.
 
 ```bash
 $ grep ##### add your solution here
